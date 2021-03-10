@@ -1,5 +1,3 @@
-from aux import date_to_str
-from aux import float_to_str
 from aux import str_to_date
 from datetime import date
 
@@ -16,4 +14,8 @@ class Client:
         self.__cpf: str = cpf
         self.__data_nascimento: date = str_to_date(data_nascimento)
         self.__data_cadastro: date = date.today()
+        Client.contador += 1
+
+
+
 
