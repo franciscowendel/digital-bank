@@ -1,0 +1,2 @@
+# digital-bank-account
+.
