@@ -8,7 +8,7 @@ class Client:
 
     def __init__(self, nome: str, sobrenome: str, email: str, cpf: str, data_nascimento: str):
         self.__codigo: int = Client.contador
-        self.___nome: str = nome
+        self.__nome: str = nome
         self.__sobrenome: str = sobrenome
         self.__email: str = email
         self.__cpf: str = cpf
@@ -20,6 +20,6 @@ class Client:
     def codigo(self) -> int:
         return self.__codigo
 
-
-
-
+    @property
+    def nome(self) -> str:
+        return self.__nome
