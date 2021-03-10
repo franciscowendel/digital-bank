@@ -16,6 +16,10 @@ class Client:
         self.__data_cadastro: date = date.today()
         Client.contador += 1
 
+    @property
+    def codigo(self) -> int:
+        return self.__codigo
+
 
 
 
