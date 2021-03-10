@@ -23,3 +23,15 @@ class Client:
     @property
     def nome(self) -> str:
         return self.__nome
+
+    @property
+    def sobrenome(self) -> str:
+        return self.__sobrenome
+
+    @property
+    def email(self) -> str:
+        return self.__email
+
+    @property
+    def cpf(self) -> str:
+        return self.__cpf
