@@ -1,3 +1,4 @@
+from aux import date_to_str
 from aux import str_to_date
 from datetime import date
 
@@ -35,3 +36,7 @@ class Client:
     @property
     def cpf(self) -> str:
         return self.__cpf
+
+    @property
+    def data_nascimento_p(self) -> str:
+        return date_to_str(self.__data_nascimento)
