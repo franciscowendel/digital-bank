@@ -94,7 +94,16 @@ def criar_conta():
 
 
 def efetuar_deposito():
-    pass
+    try:
+        if len(contas) > 0:
+            pass
+        else:
+            print('NENHUMA CONTA CRIADA...')
+        sleep(1)
+        menu()
+
+    except (ValueError, TypeError) as err:
+        return f'Erro do tipo {err} encontrado...'
 
 
 def efetuar_saque():
