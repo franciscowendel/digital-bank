@@ -96,7 +96,7 @@ def criar_conta():
 
 
 def efetuar_deposito():
-    """Deposita o valor informado caso o número da conta exista."""
+    """Deposita o valor informado na conta caso o número desta exista."""
     try:
         if len(contas) > 0:
 
@@ -130,6 +130,7 @@ def efetuar_deposito():
 
 
 def efetuar_saque():
+    """Efetua o saque na conta informada caso o número desta exista."""
     try:
         if len(contas) > 0:
 
