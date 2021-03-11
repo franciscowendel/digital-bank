@@ -63,7 +63,9 @@ class Account:
     def sacar(self, valor):
         if 0 < valor <= self.saldo_total:
             if self.saldo > valor:
-                pass
+                self.saldo = self.saldo - valor
+                self.saldo_total = self._calcula_saldo_total
+
             else:
                 pass
         else:
