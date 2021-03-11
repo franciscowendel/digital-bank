@@ -183,9 +183,16 @@ def efetuar_transferencia():
 
                 numero_destino: int = int(input())
 
-                valor: float = float(input('INFORME O VALOR DO SAQUE: '))
+                conta_destino: Account = rastrear_conta(numero_destino)
 
-                conta.transferir(valor)
+                if conta_destino:
+
+                    valor: float = float(input('INFORME O VALOR DO SAQUE: '))
+
+                    conta.transferir(valor)
+
+                else:
+                    pass
 
             else:
                 print('CONTA COM O NÚMERO INFORMADO NÃO FOI ENCONTRADA!')
