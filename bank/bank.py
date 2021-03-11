@@ -212,7 +212,15 @@ def efetuar_transferencia():
 
 def listar_contas():
     if len(contas) > 0:
-        pass
+
+        print('-----------------')
+        print('LISTA DE CONTAS: ')
+        print('-----------------')
+        print()
+        for conta in contas:
+            print(conta)
+            print('----------------')
+
     else:
         print('NENHUMA CONTA CRIADA!')
     sleep(1)
