@@ -20,7 +20,7 @@ def menu():
         print('3 - EFETUAR SAQUE: ')
         print('4 - EFETUAR TRANSFERÊNCIA: ')
         print('5 - LISTAR CONTAS: ')
-        print('5 - SAIR: ')
+        print('6 - SAIR: ')
         print()
 
         opcao: int = int(input())
