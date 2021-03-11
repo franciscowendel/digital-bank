@@ -100,6 +100,13 @@ def efetuar_deposito():
             print('-----------------------------------------------------')
             print('DIGITE O CÓDIGO DA CONTA QUE VAI RECEBER O DEPÓSITO: ')
             print()
+            for conta in contas:
+                print(conta)
+                print('------------------------')
+                print()
+            numero: int = int(input())
+
+            conta: Account = rastrear_conta(numero)
 
         else:
             print('NENHUMA CONTA CRIADA...')
