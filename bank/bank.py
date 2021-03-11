@@ -96,6 +96,7 @@ def criar_conta():
 
 
 def efetuar_deposito():
+    """Deposita o valor informado caso o número da conta exista."""
     try:
         if len(contas) > 0:
 
