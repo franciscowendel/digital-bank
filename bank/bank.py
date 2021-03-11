@@ -70,7 +70,13 @@ def listar_contas():
 
 
 def rastrear_conta(numero):
-    pass
+    x: Account = None  # noqa
+
+    if len(contas) > 0:
+        for conta in contas:
+            if conta.numero == numero:
+                x: Account = conta
+    return x
 
 
 if __name__ == '__main__':
