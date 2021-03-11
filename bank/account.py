@@ -62,7 +62,10 @@ class Account:
 
     def sacar(self, valor):
         if 0 < valor <= self.saldo_total:
-            pass
+            if self.saldo > valor:
+                pass
+            else:
+                pass
         else:
             print('VALOR MENOR QUE 0!')
 
