@@ -8,11 +8,15 @@ contas: List[Account] = []
 
 
 def menu():
-    pass
+    try:
+        pass
+    except (ValueError, TypeError) as err:
+        return f'Erro do tipo {err} encontrado...'
 
 
 def criar_conta():
     pass
+
 
 def efetuar_deposito():
     pass
