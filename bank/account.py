@@ -81,7 +81,7 @@ class Account:
     def transferir(self, conta_destino, valor):
         if 0 < valor <= self.saldo_total:
             if self.saldo >= valor:
-                pass
+                self.saldo = self.saldo - valor
             else:
                 pass
         else:
