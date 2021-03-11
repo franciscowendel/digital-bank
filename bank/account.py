@@ -10,3 +10,4 @@ class Account:
         self.__numero: int = Account.codigo
         self.__cliente: Client = cliente
         self.__saldo: float = 0.0
+        self.__limite_extra: float = 100.00
