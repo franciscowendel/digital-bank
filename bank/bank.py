@@ -96,7 +96,11 @@ def criar_conta():
 def efetuar_deposito():
     try:
         if len(contas) > 0:
-            pass
+
+            print('-----------------------------------------------------')
+            print('DIGITE O CÓDIGO DA CONTA QUE VAI RECEBER O DEPÓSITO: ')
+            print()
+
         else:
             print('NENHUMA CONTA CRIADA...')
         sleep(1)
