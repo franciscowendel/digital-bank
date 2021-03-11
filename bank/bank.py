@@ -50,7 +50,14 @@ def menu():
 
 
 def criar_conta():
-    pass
+    try:
+        print('-------------')
+        print('CRIAR CONTA: ')
+        print('-------------')
+        print()
+
+    except (ValueError, TypeError) as err:
+        return f'Erro do tipo {err} encontrado...'
 
 
 def efetuar_deposito():
