@@ -84,6 +84,7 @@ class Account:
                 self.saldo = self.saldo - valor
                 self.saldo_total = self._calcula_saldo_total
                 conta_destino.saldo = conta_destino.saldo + valor
+                conta_destino.saldo_total = conta_destino._calcula_saldo_total
 
             else:
                 pass
