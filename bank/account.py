@@ -11,7 +11,7 @@ class Account:
         self.__cliente: Client = cliente
         self.__saldo: float = 0.0
         self.__limite_extra: float = 100.00
-        self.__saldo_total: float = self._calcula_saldo_total()
+        self.__saldo_total: float = self.calcula_saldo_total
         Account.codigo += 1
 
     @property
@@ -20,7 +20,7 @@ class Account:
 
     @property
     def cliente(self) -> Client:
-        return self.cliente
+        return self.__cliente
 
     @property
     def saldo(self) -> float:
@@ -47,7 +47,7 @@ class Account:
         self.__saldo_total = valor
 
     @property
-    def _calcula_saldo_total(self):
+    def calcula_saldo_total(self):
         return self.__saldo + self.__limite_extra
 
     def __str__(self):
