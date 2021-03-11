@@ -64,6 +64,7 @@ class Account:
             print('VALOR DE DEPÓSITO MENOR QUE ZERO!')
 
     def sacar(self, valor):
+        """Saca o valor informado pelo usuário da conta informada por este."""
         if 0 < valor <= self.saldo_total:
             if self.saldo >= valor:
                 self.saldo = self.saldo - valor
