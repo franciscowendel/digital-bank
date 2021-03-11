@@ -58,6 +58,7 @@ class Account:
         if valor > 0:
             self.saldo = self.saldo + valor
             self.saldo_total = self._calcula_saldo_total
+            print('DEPÓSITO FEITO COM SUCESSO!')
 
     def sacar(self, valor):
         pass
