@@ -4,6 +4,9 @@ from client import Client
 from time import sleep
 
 
+contas: List[Account] = []
+
+
 def menu():
     pass
 
