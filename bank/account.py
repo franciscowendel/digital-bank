@@ -9,3 +9,4 @@ class Account:
     def __init__(self, cliente: Client) -> None:
         self.__numero: int = Account.codigo
         self.__cliente: Client = cliente
+        self.__saldo: float = 0.0
