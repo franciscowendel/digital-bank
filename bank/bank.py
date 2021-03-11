@@ -61,6 +61,12 @@ def criar_conta():
         sobrenome: str = input('SOBRENOME: ')
         if sobrenome == '':
             exit(1)
+        email: str = input('EMAIL: ')
+        if email == '':
+            exit(1)
+        cpf: str = input('CPF: ')
+        if cpf == '':
+            exit(1)
 
     except (ValueError, TypeError) as err:
         return f'Erro do tipo {err} encontrado...'
