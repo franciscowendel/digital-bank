@@ -4,5 +4,7 @@ from aux import float_to_str
 
 class Account:
 
-    def __init__(self):
+    codigo: int = 1000
+
+    def __init__(self, cliente: Client) -> None:
         pass
