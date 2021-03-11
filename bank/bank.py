@@ -211,7 +211,12 @@ def efetuar_transferencia():
 
 
 def listar_contas():
-    pass
+    if len(contas) > 0:
+        pass
+    else:
+        print('NENHUMA CONTA CRIADA!')
+    sleep(1)
+    menu()
 
 
 def rastrear_conta(numero):
