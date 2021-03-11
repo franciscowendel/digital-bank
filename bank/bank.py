@@ -109,6 +109,14 @@ def efetuar_deposito():
 
             conta: Account = rastrear_conta(numero)
 
+            if conta:
+                valor: float = float(input('INFORME O VALOR DO DEPÓSITO: '))
+
+                conta.depositar(valor)
+
+            else:
+                print('CONTA COM O NÚMERO INFORMADO NÃO FOI ENCONTRADA!')
+
         else:
             print('NENHUMA CONTA CRIADA...')
         sleep(1)
