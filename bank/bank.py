@@ -40,6 +40,11 @@ def menu():
             sleep(1)
             exit(1)
 
+        else:
+            print('OPÇÃO INVÁLIDA!')
+        sleep(1)
+        menu()
+
     except (ValueError, TypeError) as err:
         return f'Erro do tipo {err} encontrado...'
 
