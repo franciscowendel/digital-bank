@@ -160,7 +160,37 @@ def efetuar_saque():
 
 
 def efetuar_transferencia():
-    pass
+    try:
+        if len(contas) > 0:
+
+            print('------------------------------------------------')
+            print('DIGITE O CÓDIGO DA CONTA QUE VAI FAZER O SAQUE: ')
+            print('------------------------------------------------')
+            print()
+            for conta in contas:
+                print(conta)
+                print('------------------------')
+                print()
+            numero_origem: int = int(input())
+
+            conta_origem: Account = rastrear_conta(numero_origem)
+
+            if conta_origem:
+
+                valor: float = float(input('INFORME O VALOR DO SAQUE: '))
+
+                conta.transferir(valor)
+
+            else:
+                print('CONTA COM O NÚMERO INFORMADO NÃO FOI ENCONTRADA!')
+
+        else:
+            print('NENHUMA CONTA CRIADA...')
+        sleep(1)
+        menu()
+
+    except (ValueError, TypeError) as err:
+        return f'Erro do tipo {err} encontrado...'
 
 
 def listar_contas():
