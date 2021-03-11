@@ -235,6 +235,7 @@ def listar_contas():
 
 
 def rastrear_conta(numero):
+    """Dá a possibilidade de pegarmos uma conta pelo seu número."""
     x: Account = None  # noqa
 
     if len(contas) > 0:
