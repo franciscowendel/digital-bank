@@ -51,6 +51,7 @@ def menu():
 
 
 def criar_conta():
+    """Cria uma conta para o usuário após informado alguns dados."""
     try:
         print('-------------')
         print('CRIAR CONTA: ')
