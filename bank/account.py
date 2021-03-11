@@ -56,3 +56,6 @@ class Account:
 
     def depositar(self, valor):
         pass
+
+    def sacar(self, valor):
+        pass
