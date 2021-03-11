@@ -15,6 +15,12 @@ def menu():
         print()
         print('O QUE DESEJA FAZER: ')
         print()
+        print('1 - CRIAR CONTA: ')
+        print('2 - EFETUAR DEPÓSITO: ')
+        print('3 - EFETUAR SAQUE: ')
+        print('4 - EFETUAR TRANSFERÊNCIA: ')
+        print('5 - LISTAR CONTAS: ')
+        print('5 - SAIR: ')
 
     except (ValueError, TypeError) as err:
         return f'Erro do tipo {err} encontrado...'
