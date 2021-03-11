@@ -176,10 +176,12 @@ def efetuar_transferencia():
             conta_origem: Account = rastrear_conta(numero_origem)
 
             if conta_origem:
-                print('-------------------------------------------------')
-                print('DIGITE O NUMERO DA CONTA QUE RECEBER O DEPÓSITO: ')
-                print('-------------------------------------------------')
+                print('-----------------------------------------------------')
+                print('DIGITE O NUMERO DA CONTA QUE VAI RECEBER O DEPÓSITO: ')
+                print('-----------------------------------------------------')
                 print()
+
+                numero_destino: int = int(input())
 
                 valor: float = float(input('INFORME O VALOR DO SAQUE: '))
 
@@ -187,6 +189,8 @@ def efetuar_transferencia():
 
             else:
                 print('CONTA COM O NÚMERO INFORMADO NÃO FOI ENCONTRADA!')
+            sleep(1)
+            menu()
 
         else:
             print('NENHUMA CONTA CRIADA...')
