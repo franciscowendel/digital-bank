@@ -33,3 +33,7 @@ class Account:
     @property
     def limite_extra(self) -> float:
         return self.__limite_extra
+
+    @limite_extra.setter
+    def limite_extra(self, valor):
+        self.__limite_extra = valor
