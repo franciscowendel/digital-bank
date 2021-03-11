@@ -74,6 +74,12 @@ def criar_conta():
 
         cliente: Client = Client(nome, sobrenome, email, cpf, data_nascimento)
 
+        conta: Account = Account(cliente)
+
+        print('-------------------------')
+        print('CONTA CRIADA COM SUCESSO!')
+        print('-------------------------')
+
     except (ValueError, TypeError) as err:
         return f'Erro do tipo {err} encontrado...'
 
