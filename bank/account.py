@@ -91,5 +91,7 @@ class Account:
                 self.limite_extra = self.limite_extra + resto
                 self.saldo = 0
                 self.saldo_total = self._calcula_saldo_total
+                conta_destino.saldo = conta_destino.saldo + valor
+
         else:
             print('ERRO AO EFETUAR A TRANSFERÊNCIA!')
