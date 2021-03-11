@@ -92,6 +92,7 @@ class Account:
                 self.saldo = 0
                 self.saldo_total = self._calcula_saldo_total
                 conta_destino.saldo = conta_destino.saldo + valor
+                conta_destino.saldo_total = conta_destino._calcula_saldo_total  # noqa
 
         else:
             print('ERRO AO EFETUAR A TRANSFERÊNCIA!')
