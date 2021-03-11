@@ -99,6 +99,7 @@ def efetuar_deposito():
 
             print('-----------------------------------------------------')
             print('DIGITE O CÓDIGO DA CONTA QUE VAI RECEBER O DEPÓSITO: ')
+            print('-----------------------------------------------------')
             print()
             for conta in contas:
                 print(conta)
