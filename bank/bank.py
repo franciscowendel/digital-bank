@@ -164,6 +164,7 @@ def efetuar_saque():
 
 
 def efetuar_transferencia():
+    """Transfere de uma conta para a outra (caso o número destas existam) o valor informado."""
     try:
         if len(contas) > 0:
 
