@@ -21,6 +21,24 @@ def menu():
         print('4 - EFETUAR TRANSFERÊNCIA: ')
         print('5 - LISTAR CONTAS: ')
         print('5 - SAIR: ')
+        print()
+
+        opcao: int = int(input())
+
+        if opcao == 1:
+            criar_conta()
+        elif opcao == 2:
+            efetuar_deposito()
+        elif opcao == 3:
+            efetuar_saque()
+        elif opcao == 4:
+            efetuar_transferencia()
+        elif opcao == 5:
+            listar_contas()
+        elif opcao == 6:
+            print('CONEXÃO TERMINADA...')
+            sleep(1)
+            exit(1)
 
     except (ValueError, TypeError) as err:
         return f'Erro do tipo {err} encontrado...'
