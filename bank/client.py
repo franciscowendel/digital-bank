@@ -40,3 +40,7 @@ class Client:
     @property
     def data_nascimento_p(self) -> str:
         return date_to_str(self.__data_nascimento)
+
+    @property
+    def data_cadastro_p(self) -> str:
+        return date_to_str(self.__data_cadastro)
