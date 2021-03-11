@@ -21,3 +21,11 @@ class Account:
     @property
     def cliente(self) -> Client:
         return self.cliente
+
+    @property
+    def saldo(self) -> float:
+        return self.__saldo
+
+    @saldo.setter
+    def saldo(self, valor):
+        self.__saldo = valor
