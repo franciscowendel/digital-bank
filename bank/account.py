@@ -81,6 +81,8 @@ class Account:
             print('VALOR DE SAQUE MENOR QUE ZERO!')
 
     def transferir(self, conta_destino, valor):
+        """Transfere um valor de uma conta para outra após ser informado o código da conta origem e
+         o código da conta destino."""
         if 0 < valor <= self.saldo_total:
             if self.saldo >= valor:
                 self.saldo = self.saldo - valor
