@@ -53,3 +53,6 @@ class Account:
     def __str__(self):
         return f'Número da conta: {self.numero}\nDados do cliente: {self.cliente}' \
                f'\nSaldo total: {float_to_str(self.saldo_total)}'
+
+    def depositar(self, valor):
+        pass
