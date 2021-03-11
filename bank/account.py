@@ -87,6 +87,7 @@ class Account:
                 conta_destino.saldo_total = conta_destino._calcula_saldo_total  # noqa
 
             else:
-                pass
+                resto: float = self.saldo - valor
+
         else:
             print('ERRO AO EFETUAR A TRANSFERÊNCIA!')
