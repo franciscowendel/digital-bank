@@ -14,4 +14,6 @@ class Account:
         self.__saldo_total: float = self._calcula_saldo_total()
         Account.codigo += 1
 
-
+    @property
+    def numero(self) -> int:
+        return self.__numero
