@@ -220,6 +220,7 @@ def listar_contas():
         for conta in contas:
             print(conta)
             print('----------------')
+            print()
 
     else:
         print('NENHUMA CONTA CRIADA!')
