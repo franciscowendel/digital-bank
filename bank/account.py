@@ -55,6 +55,7 @@ class Account:
                f'\nSaldo total: {float_to_str(self.saldo_total)}'
 
     def depositar(self, valor):
+        """Deposita o valor informado pelo usuário na conta informada por este."""
         if valor > 0:
             self.saldo = self.saldo + valor
             self.saldo_total = self._calcula_saldo_total
