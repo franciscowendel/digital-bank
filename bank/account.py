@@ -89,6 +89,7 @@ class Account:
             else:
                 resto: float = self.saldo - valor
                 self.limite_extra = self.limite_extra + resto
-
+                self.saldo = 0
+                self.saldo_total = self._calcula_saldo_total
         else:
             print('ERRO AO EFETUAR A TRANSFERÊNCIA!')
