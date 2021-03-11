@@ -61,7 +61,10 @@ class Account:
             print('DEPÓSITO FEITO COM SUCESSO!')
 
     def sacar(self, valor):
-        pass
+        if 0 < valor <= self.saldo_total:
+            pass
+        else:
+            print('VALOR MENOR QUE 0!')
 
     def transferir(self, conta_destino, valor):
         pass
