@@ -45,3 +45,7 @@ class Account:
     @saldo_total.setter
     def saldo_total(self, valor):
         self.__saldo_total = valor
+
+    @property
+    def _calcula_saldo_total(self):
+        return self.__saldo + self.__limite_extra
