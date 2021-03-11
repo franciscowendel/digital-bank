@@ -17,3 +17,7 @@ class Account:
     @property
     def numero(self) -> int:
         return self.__numero
+
+    @property
+    def cliente(self) -> Client:
+        return self.cliente
