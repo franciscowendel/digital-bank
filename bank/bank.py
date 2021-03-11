@@ -98,7 +98,7 @@ def efetuar_deposito():
         if len(contas) > 0:
 
             print('-----------------------------------------------------')
-            print('DIGITE O CÓDIGO DA CONTA QUE VAI RECEBER O DEPÓSITO: ')
+            print('DIGITE O NÚMERO DA CONTA QUE VAI RECEBER O DEPÓSITO: ')
             print('-----------------------------------------------------')
             print()
             for conta in contas:
@@ -131,7 +131,7 @@ def efetuar_saque():
         if len(contas) > 0:
 
             print('------------------------------------------------')
-            print('DIGITE O CÓDIGO DA CONTA QUE VAI FAZER O SAQUE: ')
+            print('DIGITE O NÚMERO DA CONTA QUE VAI FAZER O SAQUE: ')
             print('------------------------------------------------')
             print()
             for conta in contas:
@@ -164,7 +164,7 @@ def efetuar_transferencia():
         if len(contas) > 0:
 
             print('---------------------------------------------------')
-            print('DIGITE O CÓDIGO DA CONTA QUE VAI FAZER O DEPÓSITO: ')
+            print('DIGITE O NÚMERO DA CONTA QUE VAI FAZER O DEPÓSITO: ')
             print('---------------------------------------------------')
             print()
             for conta in contas:
@@ -177,7 +177,7 @@ def efetuar_transferencia():
 
             if conta_origem:
                 print('-----------------------------------------------------')
-                print('DIGITE O NUMERO DA CONTA QUE VAI RECEBER O DEPÓSITO: ')
+                print('DIGITE O NÚMERO DA CONTA QUE VAI RECEBER O DEPÓSITO: ')
                 print('-----------------------------------------------------')
                 print()
 
@@ -187,12 +187,14 @@ def efetuar_transferencia():
 
                 if conta_destino:
 
-                    valor: float = float(input('INFORME O VALOR DO SAQUE: '))
+                    valor: float = float(input('INFORME O VALOR DA TRANSFERÊNCIA: '))
 
-                    conta.transferir(valor)
+                    conta_origem.transferir(conta_destino, valor)
 
                 else:
-                    pass
+                    print('NÚMERO DA CONTA NÃO FOI ENCONTRADO...')
+                sleep(1)
+                menu()
 
             else:
                 print('CONTA COM O NÚMERO INFORMADO NÃO FOI ENCONTRADA!')
