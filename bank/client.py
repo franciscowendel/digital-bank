@@ -44,3 +44,7 @@ class Client:
     @property
     def data_cadastro_p(self) -> str:
         return date_to_str(self.__data_cadastro)
+
+    def __str__(self):
+        return f'\nCódigo: {self.codigo}\nNome: {self.nome}\nSobrenome: {self.sobrenome}' \
+               f'\nData de nascimento: {self.data_nascimento_p}\nData de cadastro: {self.data_cadastro_p}'
