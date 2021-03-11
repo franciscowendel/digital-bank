@@ -67,6 +67,12 @@ def criar_conta():
         cpf: str = input('CPF: ')
         if cpf == '':
             exit(1)
+        data_nascimento: str = input('DATA DE NASCIMENTO: (dd/mm/yyyy) ')
+        if data_nascimento == '':
+            exit(1)
+        print()
+
+        cliente: Client = Client(nome, sobrenome, email, cpf, data_nascimento)
 
     except (ValueError, TypeError) as err:
         return f'Erro do tipo {err} encontrado...'
