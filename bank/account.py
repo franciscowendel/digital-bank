@@ -7,4 +7,5 @@ class Account:
     codigo: int = 1000
 
     def __init__(self, cliente: Client) -> None:
-        pass
+        self.__numero: int = Account.codigo
+        self.__cliente: Client = cliente
