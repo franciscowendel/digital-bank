@@ -80,6 +80,9 @@ class Account:
 
     def transferir(self, conta_destino, valor):
         if 0 < valor <= self.saldo_total:
-            pass
+            if self.saldo >= valor:
+                pass
+            else:
+                pass
         else:
             print('ERRO AO EFETUAR A TRANSFERÊNCIA!')
