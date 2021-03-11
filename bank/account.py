@@ -79,4 +79,7 @@ class Account:
             print('VALOR DE SAQUE MENOR QUE ZERO!')
 
     def transferir(self, conta_destino, valor):
-        pass
+        if 0 < valor <= self.saldo_total:
+            pass
+        else:
+            print('ERRO AO EFETUAR A TRANSFERÊNCIA!')
