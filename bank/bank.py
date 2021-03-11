@@ -163,9 +163,9 @@ def efetuar_transferencia():
     try:
         if len(contas) > 0:
 
-            print('------------------------------------------------')
-            print('DIGITE O CÓDIGO DA CONTA QUE VAI FAZER O SAQUE: ')
-            print('------------------------------------------------')
+            print('---------------------------------------------------')
+            print('DIGITE O CÓDIGO DA CONTA QUE VAI FAZER O DEPÓSITO: ')
+            print('---------------------------------------------------')
             print()
             for conta in contas:
                 print(conta)
@@ -176,6 +176,10 @@ def efetuar_transferencia():
             conta_origem: Account = rastrear_conta(numero_origem)
 
             if conta_origem:
+                print('-------------------------------------------------')
+                print('DIGITE O NUMERO DA CONTA QUE RECEBER O DEPÓSITO: ')
+                print('-------------------------------------------------')
+                print()
 
                 valor: float = float(input('INFORME O VALOR DO SAQUE: '))
 
