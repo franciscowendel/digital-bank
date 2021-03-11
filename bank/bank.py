@@ -79,6 +79,15 @@ def criar_conta():
         print('-------------------------')
         print('CONTA CRIADA COM SUCESSO!')
         print('-------------------------')
+        print()
+        sleep(2)
+        contas.append(conta)
+        print('----------------')
+        print('DADOS DA CONTA: ')
+        print('----------------')
+        print()
+        print(conta)
+        print()
 
     except (ValueError, TypeError) as err:
         return f'Erro do tipo {err} encontrado...'
