@@ -59,3 +59,6 @@ class Account:
 
     def sacar(self, valor):
         pass
+
+    def transferir(self, conta_destino, valor):
+        pass
