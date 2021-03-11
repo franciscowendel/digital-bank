@@ -216,6 +216,7 @@ def efetuar_transferencia():
 
 
 def listar_contas():
+    """Lista todas as contas criadas."""
     if len(contas) > 0:
 
         print('-----------------')
