@@ -11,3 +11,4 @@ class Account:
         self.__cliente: Client = cliente
         self.__saldo: float = 0.0
         self.__limite_extra: float = 100.00
+        self.__saldo_total: float = self._calcula_saldo_total()
