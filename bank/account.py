@@ -37,3 +37,11 @@ class Account:
     @limite_extra.setter
     def limite_extra(self, valor):
         self.__limite_extra = valor
+
+    @property
+    def saldo_total(self) -> float:
+        return self.__saldo_total
+
+    @saldo_total.setter
+    def saldo_total(self, valor):
+        self.__saldo_total = valor
