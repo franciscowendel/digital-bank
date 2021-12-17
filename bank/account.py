@@ -54,6 +54,7 @@ class Account:
                f"\nTotal balance: {float_to_str(self.saldo_total)}"
 
     def depositar(self, value):
+        """Deposita o valor informado pelo usuário na conta informada por este."""
         if value > 0:
             self.saldo = self.saldo + value
             self.saldo_total = self._calcula_saldo_total
@@ -64,6 +65,7 @@ class Account:
             print('ERROR...')
 
     def sacar(self, value):
+        """Saca o valor informado pelo usuário da conta informada por este."""
         if 0 < value <= self.saldo_total:
             if self.saldo >= value:
                 self.saldo = self.saldo - value
@@ -81,6 +83,8 @@ class Account:
             print('ERROR...')
 
     def transferir(self, other_account, value):
+        """Transfere um valor de uma conta para outra após ser informado o código da conta origem e
+        o código da conta destino."""
         if 0 < value <= self.saldo_total:
             if self.saldo >= value:
                 self.saldo = self.saldo - value
