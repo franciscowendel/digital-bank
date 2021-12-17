@@ -61,7 +61,7 @@ def menu():
         menu()
 
     except (ValueError, TypeError, UnboundLocalError) as err:
-        return f'Error {err} found...'
+        return f'Errors {err} found...'
 
 
 def criar_conta():
@@ -127,7 +127,7 @@ def criar_conta():
         print()
 
     except (ValueError, TypeError, UnboundLocalError) as err:
-        return f'Error {err} found...'
+        return f'Errors {err} found...'
 
 
 def depositar():
