@@ -1,18 +1,17 @@
 from typing import List
-from account import Account
 from client import Client
+from account import Account
 from time import sleep
 
 
-contas: List[Account] = []
+accounts: List[Account] = []
 
 
 def menu():
-    """Mostra as opções do banco digital para o usuário."""
     try:
-        print('-------------------------------------------------------------------------------------------------------')
-        print('---------------------------------------------- ATM ----------------------------------------------------')
-        print('-------------------------------------------------------------------------------------------------------')
+        print('-------------------------------------------------------')
+        print('-------------------------ATM---------------------------')
+        print('-------------------------------------------------------')
         print()
         print('1 - CRIAR CONTA: ')
         print('2 - EFETUAR DEPÓSITO: ')
@@ -22,57 +21,95 @@ def menu():
         print('6 - SAIR: ')
         print()
 
-        opcao: int = int(input())
-
-        if opcao == 1:
-            criar_conta()
-        elif opcao == 2:
-            efetuar_deposito()
-        elif opcao == 3:
-            efetuar_saque()
-        elif opcao == 4:
-            efetuar_transferencia()
-        elif opcao == 5:
-            listar_contas()
-        elif opcao == 6:
-            print('CONEXÃO TERMINADA...')
-            sleep(1)
-            exit(1)
-
+        option = input()
+        if option == '' or not option.isnumeric():
+            print()
+            print('ESCOLHA UMA OPÇÃO!')
+            print()
+            sleep(0.5)
+            menu()
         else:
-            print('OPÇÃO INVÁLIDA!')
-        sleep(1)
+            option = int(option)
+            if option > 6:
+                print()
+                print('APENAS AS ESCOLHAS APRESENTADAS!')
+                print()
+                sleep(0.5)
+                menu()
+
+        if option == 1:
+            criar_conta()
+        elif option == 2:
+            depositar()
+        elif option == 3:
+            sacar()
+        elif option == 4:
+            transferir()
+        elif option == 5:
+            listar_contas()
+        elif option == 6:
+            print()
+            print('FIM DA SESSÃO...')
+            print()
+            sleep(0.5)
+            exit(1)
+        else:
+            print()
+            print('ERROR...')
+            print()
+        sleep(0.5)
         menu()
 
-    except (ValueError, TypeError) as err:
-        return f'Erro do tipo {err} encontrado...'
+    except (ValueError, TypeError, UnboundLocalError) as err:
+        return f'Error {err} found...'
 
 
 def criar_conta():
-    """Cria uma conta para o usuário após informado alguns dados."""
     try:
         print('-------------')
         print('CRIAR CONTA: ')
         print('-------------')
         print()
-        nome: str = input('NOME: ')
-        if nome == '':
-            exit(1)
-        sobrenome: str = input('SOBRENOME: ')
-        if sobrenome == '':
-            exit(1)
-        email: str = input('EMAIL: ')
-        if email == '':
-            exit(1)
-        cpf: str = input('CPF: ')
-        if cpf == '':
-            exit(1)
-        data_nascimento: str = input('DATA DE NASCIMENTO: (dd/mm/yyyy) ')
-        if data_nascimento == '':
-            exit(1)
-        print()
+        name: str = input('NOME: ')
+        if name == '' or name.isnumeric():
+            print()
+            print('DIGITE SEU NOME!')
+            print()
+            sleep(0.5)
+            menu()
 
-        cliente: Client = Client(nome, sobrenome, email, cpf, data_nascimento)
+        last_name: str = input('SOBRENOME: ')
+        if last_name == '' or last_name.isnumeric():
+            print()
+            print('DIGITE SEU SOBRENOME!')
+            print()
+            sleep(0.5)
+            menu()
+
+        email: str = input('EMAIL: ')
+        if email == '' or email.isnumeric():
+            print()
+            print('DIGITE SEU EMAIL!')
+            print()
+            sleep(0.5)
+            menu()
+        cpf: str = input('CPF: ')
+        if cpf == '' or cpf.isnumeric():
+            print()
+            print('DIGITE SEU CPF!')
+            print()
+            sleep(0.5)
+            menu()
+
+        data_nascimento: str = input('DATA DE NASCIMENTO: ')
+        if data_nascimento == '' or data_nascimento.isnumeric():
+            print()
+            print('DIGITE SUA DATA DE NASCIMENTO!')
+            print()
+            sleep(0.5)
+            menu()
+        print()
+        cliente: Client = Client(name, last_name, email, cpf, data_nascimento)
 
         conta: Account = Account(cliente)
 
@@ -80,8 +117,8 @@ def criar_conta():
         print('CONTA CRIADA COM SUCESSO!')
         print('-------------------------')
         print()
-        sleep(2)
-        contas.append(conta)
+        sleep(0.5)
+        accounts.append(conta)
         print('----------------')
         print('DADOS DA CONTA: ')
         print('----------------')
@@ -89,157 +126,236 @@ def criar_conta():
         print(conta)
         print()
 
-    except (ValueError, TypeError) as err:
-        return f'Erro do tipo {err} encontrado...'
+    except (ValueError, TypeError, UnboundLocalError) as err:
+        return f'Error {err} found...'
 
 
-def efetuar_deposito():
-    """Deposita o valor informado na conta caso o número desta exista."""
+def depositar():
     try:
-        if len(contas) > 0:
-
-            print('-----------------------------------------------------')
-            print('DIGITE O NÚMERO DA CONTA QUE VAI RECEBER O DEPÓSITO: ')
-            print('-----------------------------------------------------')
+        if len(accounts) > 0:
+            print('----------------------------------------------------')
+            print('DIGITE O NÚMERO DA CONTA QUE VAI RECEBER O DEPÓSITO:')
+            print('----------------------------------------------------')
             print()
-            for conta in contas:
+            for conta in accounts:
+                print('------------------------------------------------')
                 print(conta)
-                print('------------------------')
+                print('------------------------------------------------')
                 print()
-            numero: int = int(input())
+            number = input()
+            if number == '' or not number.isnumeric():
+                print()
+                print('DIGITE O NÚMERO!')
+                print()
+                sleep(0.5)
+                menu()
+            else:
+                number = int(number)
 
-            conta: Account = rastrear_conta(numero)
+            conta: Account = rastrear_conta(number)
 
             if conta:
-                valor: float = float(input('INFORME O VALOR DO DEPÓSITO: '))
-
+                valor = input('DIGITE O VALOR DO DEPÓSITO: ')
+                if valor == '' or not valor.isnumeric():
+                    print()
+                    print('DIGITE O VALOR DO DEPÓSITO!')
+                    print()
+                    sleep(0.5)
+                    menu()
+                else:
+                    valor = int(valor)
+                    if valor < 1:
+                        print()
+                        print('APENAS VALORES MAIORES QUE ZERO!')
+                        print()
+                        sleep(0.5)
+                        menu()
                 conta.depositar(valor)
 
             else:
-                print('CONTA COM O NÚMERO INFORMADO NÃO FOI ENCONTRADA!')
+                print()
+                print('CONTA NÃO ENCONTRADA!')
+                print()
+                sleep(0.5)
+                menu()
 
         else:
-            print('NENHUMA CONTA CRIADA...')
-        sleep(1)
+            print()
+            print('NENHUMA CONTA CRIADA!')
+            print()
+        sleep(0.5)
         menu()
 
-    except (ValueError, TypeError) as err:
-        return f'Erro do tipo {err} encontrado...'
+    except (ValueError, TypeError, UnboundLocalError) as err:
+        return f'Errors {err} found...'
 
 
-def efetuar_saque():
-    """Efetua o saque na conta informada caso o número desta exista."""
+def sacar():
     try:
-        if len(contas) > 0:
-
-            print('------------------------------------------------')
-            print('DIGITE O NÚMERO DA CONTA QUE VAI FAZER O SAQUE: ')
-            print('------------------------------------------------')
+        if len(accounts) > 0:
+            print('--------------------------------------------------')
+            print('DIGITE O NÚMERO DA CONTA QUE VAI EFETUAR O SAQUE: ')
+            print('--------------------------------------------------')
             print()
-            for conta in contas:
+            for conta in accounts:
+                print('----------------------------------------------')
                 print(conta)
-                print('------------------------')
+                print('----------------------------------------------')
                 print()
-            numero: int = int(input())
+            number = input()
+            if number == '' or not number.isnumeric():
+                print()
+                print('DIGITE O NÚMERO DA CONTA!')
+                print()
+                sleep(0.5)
+                menu()
+            else:
+                number = int(number)
 
-            conta: Account = rastrear_conta(numero)
+            conta: Account = rastrear_conta(number)
 
             if conta:
-                valor: float = float(input('INFORME O VALOR DO SAQUE: '))
+                valor = input('DIGITE O VALOR DO SAQUE: ')
+                if valor == '' or not valor.isnumeric():
+                    print()
+                    print('DIGITE O VALOR DO SAQUE!')
+                    print()
+                    sleep(0.5)
+                    menu()
+                else:
+                    valor = float(valor)
+                    if valor < 0:
+                        print()
+                        print('APENAS VALORES MAIORES QUE ZERO!')
+                        print()
+                        sleep(0.5)
+                        menu()
 
                 conta.sacar(valor)
 
             else:
-                print('CONTA COM O NÚMERO INFORMADO NÃO FOI ENCONTRADA!')
+                print()
+                print('CONTA NÃO ENCONTRADA!')
+                print()
+                sleep(0.5)
+                menu()
 
         else:
-            print('NENHUMA CONTA CRIADA...')
-        sleep(1)
+            print()
+            print('NENHUMA CONTA CRIADA!')
+            print()
+        sleep(0.5)
         menu()
 
-    except (ValueError, TypeError) as err:
-        return f'Erro do tipo {err} encontrado...'
+    except (ValueError, TypeError, UnboundLocalError) as err:
+        return f'Errors {err} found...'
 
 
-def efetuar_transferencia():
-    """Transfere de uma conta para a outra (caso o número destas existam) o valor informado."""
+def transferir():
     try:
-        if len(contas) > 0:
+        if len(accounts) > 0:
 
             print('---------------------------------------------------')
             print('DIGITE O NÚMERO DA CONTA QUE VAI FAZER O DEPÓSITO: ')
             print('---------------------------------------------------')
             print()
-            for conta in contas:
+            for conta in accounts:
+                print('-----------------------------------------------')
                 print(conta)
-                print('------------------------')
+                print('-----------------------------------------------')
                 print()
-            numero_origem: int = int(input())
+            number_1 = input()
+            if number_1 == '' or not number_1.isnumeric():
+                print()
+                print('DIGITE O NÚMERO DA CONTA!')
+                print()
+                sleep(0.5)
+                menu()
+            else:
+                number_1 = int(number_1)
 
-            conta_origem: Account = rastrear_conta(numero_origem)
+            conta_1 = rastrear_conta(number_1)
 
-            if conta_origem:
+            if conta_1:
                 print('-----------------------------------------------------')
                 print('DIGITE O NÚMERO DA CONTA QUE VAI RECEBER O DEPÓSITO: ')
                 print('-----------------------------------------------------')
                 print()
-
-                numero_destino: int = int(input())
-
-                conta_destino: Account = rastrear_conta(numero_destino)
-
-                if conta_destino:
-
-                    valor: float = float(input('INFORME O VALOR DA TRANSFERÊNCIA: '))
-
-                    conta_origem.transferir(conta_destino, valor)
-
+                number_2 = input()
+                if number_2 == '' or not number_2.isnumeric():
+                    print()
+                    print('DIGITE O NÚMERO DA CONTA!')
+                    print()
+                    sleep(0.5)
+                    menu()
                 else:
-                    print('NÚMERO DA CONTA NÃO FOI ENCONTRADO...')
-                sleep(1)
-                menu()
+                    number_2 = int(number_2)
+
+                conta_2 = rastrear_conta(number_2)
+
+                if conta_2:
+                    valor = input('DIGITE O VALOR DA TRANSFERÊNCIA: ')
+                    if valor == '' or not valor.isnumeric():
+                        print()
+                        print('DIGITE O VALOR DA TRANSFERÊNCIA!')
+                        print()
+                        sleep(0.5)
+                        menu()
+                    else:
+                        valor = float(valor)
+                        if valor < 0:
+                            print()
+                            print('APENAS VALORES MAIORES QUE ZERO!')
+                            print()
+                            sleep(0.5)
+                            menu()
+
+                    conta_1.transferir(conta_2, valor)
 
             else:
-                print('CONTA COM O NÚMERO INFORMADO NÃO FOI ENCONTRADA!')
-            sleep(1)
-            menu()
-
+                print()
+                print('CONTA NÃO ENCONTRADA!')
+                print()
+                sleep(0.5)
+                menu()
         else:
-            print('NENHUMA CONTA CRIADA...')
-        sleep(1)
+            print()
+            print('NENHUMA CONTA CRIADA!')
+            print()
+        sleep(0.5)
         menu()
 
-    except (ValueError, TypeError) as err:
-        return f'Erro do tipo {err} encontrado...'
+    except (ValueError, TypeError, UnboundLocalError) as err:
+        return f'Errors {err} found...'
 
 
 def listar_contas():
-    """Lista todas as contas criadas."""
-    if len(contas) > 0:
+    if len(accounts) > 0:
 
         print('-----------------')
         print('LISTA DE CONTAS: ')
         print('-----------------')
         print()
-        for conta in contas:
+        for conta in accounts:
+            print('-------------------------------------------')
             print(conta)
-            print('----------------')
+            print('-------------------------------------------')
             print()
-
     else:
+        print()
         print('NENHUMA CONTA CRIADA!')
-    sleep(1)
+        print()
+    sleep(0.5)
     menu()
 
 
-def rastrear_conta(numero):
-    """Dá a possibilidade de pegarmos uma conta pelo seu número."""
-    x: Account = None  # noqa
+def rastrear_conta(number):
+    x = None
 
-    if len(contas) > 0:
-        for conta in contas:
-            if conta.numero == numero:
-                x: Account = conta
+    if len(accounts) > 0:
+        for conta in accounts:
+            if conta.numero == number:
+                x = conta
     return x
 
 
