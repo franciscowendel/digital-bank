@@ -1,17 +1,17 @@
-from client import Client
 from aux import float_to_str
+from client import Client
 
 
 class Account:
 
     codigo: int = 1000
 
-    def __init__(self, cliente: Client) -> None:
+    def __init__(self, client: Client) -> None:
         self.__numero: int = Account.codigo
-        self.__cliente: Client = cliente
+        self.__client: Client = client
         self.__saldo: float = 0.0
         self.__limite_extra: float = 100.00
-        self.__saldo_total: float = self._calcula_saldo_total
+        self.__saldo_total: float = self._calcula_saldo_total()
         Account.codigo += 1
 
     @property
@@ -19,24 +19,24 @@ class Account:
         return self.__numero
 
     @property
-    def cliente(self) -> Client:
-        return self.__cliente
+    def client(self):
+        return self.__client
 
     @property
     def saldo(self) -> float:
         return self.__saldo
 
     @saldo.setter
-    def saldo(self, valor):
-        self.__saldo = valor
+    def saldo(self, value):
+        self.__saldo = value
 
     @property
     def limite_extra(self) -> float:
         return self.__limite_extra
 
     @limite_extra.setter
-    def limite_extra(self, valor):
-        self.__limite_extra = valor
+    def limite_extra(self, value):
+        self.__limite_extra = value
 
     @property
     def saldo_total(self) -> float:
@@ -46,58 +46,57 @@ class Account:
     def saldo_total(self, valor):
         self.__saldo_total = valor
 
-    @property
-    def _calcula_saldo_total(self):
+    def _calcula_saldo_total(self) -> float:
         return self.__saldo + self.__limite_extra
 
-    def __str__(self):
-        return f'Número da conta: {self.numero}\nDados do cliente: {self.cliente}' \
-               f'\nSaldo total: {float_to_str(self.saldo_total)}'
+    def __str__(self) -> str:
+        return f"Account's number: {self.numero}\n{self.client}" \
+               f"\nTotal balance: {float_to_str(self.saldo_total)}"
 
-    def depositar(self, valor):
-        """Deposita o valor informado pelo usuário na conta informada por este."""
-        if valor > 0:
-            self.saldo = self.saldo + valor
+    def depositar(self, value):
+        if value > 0:
+            self.saldo = self.saldo + value
             self.saldo_total = self._calcula_saldo_total
+            print()
             print('DEPÓSITO FEITO COM SUCESSO!')
+            print()
         else:
-            print('VALOR DE DEPÓSITO MENOR QUE ZERO!')
+            print('ERROR...')
 
-    def sacar(self, valor):
-        """Saca o valor informado pelo usuário da conta informada por este."""
-        if 0 < valor <= self.saldo_total:
-            if self.saldo >= valor:
-                self.saldo = self.saldo - valor
+    def sacar(self, value):
+        if 0 < value <= self.saldo_total:
+            if self.saldo >= value:
+                self.saldo = self.saldo - value
                 self.saldo_total = self._calcula_saldo_total
 
             else:
-                resto: float = self.saldo - valor
-                self.limite_extra = self.limite_extra + resto
+                resto: float = self.saldo - value
+                self.limite_extra: float = self.limite_extra + resto
                 self.saldo = 0
                 self.saldo_total = self._calcula_saldo_total
+            print()
             print('SAQUE EFETUADO COM SUCESSO!')
-
+            print()
         else:
-            print('VALOR DE SAQUE MENOR QUE ZERO!')
+            print('ERROR...')
 
-    def transferir(self, conta_destino, valor):
-        """Transfere um valor de uma conta para outra após ser informado o código da conta origem e
-         o código da conta destino."""
-        if 0 < valor <= self.saldo_total:
-            if self.saldo >= valor:
-                self.saldo = self.saldo - valor
-                self.saldo_total = self._calcula_saldo_total
-                conta_destino.saldo = conta_destino.saldo + valor
-                conta_destino.saldo_total = conta_destino._calcula_saldo_total  # noqa
+    def transferir(self, other_account, value):
+        if 0 < value <= self.saldo_total:
+            if self.saldo >= value:
+                self.saldo = self.saldo - value
+                self.saldo_total = self._calcula_saldo_total()
+                other_account.saldo = other_account.saldo + value
+                other_account.saldo_total = other_account._calcula_saldo_total()  # noqa
 
             else:
-                resto: float = self.saldo - valor
+                resto: float = self.saldo - value
                 self.limite_extra = self.limite_extra + resto
                 self.saldo = 0
-                self.saldo_total = self._calcula_saldo_total
-                conta_destino.saldo = conta_destino.saldo + valor
-                conta_destino.saldo_total = conta_destino._calcula_saldo_total  # noqa
+                self.saldo_total = self._calcula_saldo_total()
+                other_account.saldo = other_account.saldo + value
+                other_account.saldo_total = other_account._calcula_saldo_total()  # noqa
+            print()
             print('TRANSFERÊNCIA EFETUADA COM SUCESSO!')
-
+            print()
         else:
-            print('ERRO AO EFETUAR A TRANSFERÊNCIA!')
+            print('ERROR...')
