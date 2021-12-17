@@ -1,16 +1,15 @@
-from aux import date_to_str
-from aux import str_to_date
+from aux import date_to_str, str_to_date
 from datetime import date
 
 
 class Client:
 
-    contador: int = 100
+    contador = 100
 
-    def __init__(self, nome: str, sobrenome: str, email: str, cpf: str, data_nascimento: str):
-        self.__codigo: int = Client.contador
-        self.__nome: str = nome
-        self.__sobrenome: str = sobrenome
+    def __init__(self, name: str, last_name: str, email: str, cpf: str, data_nascimento: str) -> None:
+        self.__code: int = Client.contador
+        self.__name: str = name
+        self.__last_name: str = last_name
         self.__email: str = email
         self.__cpf: str = cpf
         self.__data_nascimento: date = str_to_date(data_nascimento)
@@ -18,16 +17,16 @@ class Client:
         Client.contador += 1
 
     @property
-    def codigo(self) -> int:
-        return self.__codigo
+    def code(self) -> int:
+        return self.__code
 
     @property
-    def nome(self) -> str:
-        return self.__nome
+    def name(self) -> str:
+        return self.__name
 
     @property
-    def sobrenome(self) -> str:
-        return self.__sobrenome
+    def last_name(self) -> str:
+        return self.__last_name
 
     @property
     def email(self) -> str:
@@ -38,13 +37,14 @@ class Client:
         return self.__cpf
 
     @property
-    def data_nascimento_p(self) -> str:
+    def data_nascimento_ed(self) -> str:
         return date_to_str(self.__data_nascimento)
 
     @property
-    def data_cadastro_p(self) -> str:
+    def data_cadastro_ed(self) -> str:
         return date_to_str(self.__data_cadastro)
 
-    def __str__(self):
-        return f'\nCódigo: {self.codigo}\nNome: {self.nome}\nSobrenome: {self.sobrenome}' \
-               f'\nData de nascimento: {self.data_nascimento_p}\nData de cadastro: {self.data_cadastro_p}'
+    def __str__(self) -> str:
+        return f"Client's code: {self.code}\nCLient's name: {self.name}\nClient's last name: {self.last_name}" \
+               f"\nClient's email: {self.email}\nClient's birthday: {self.data_nascimento_ed}" \
+               f"\nClient's day of registration: {self.data_cadastro_ed}"
