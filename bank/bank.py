@@ -219,12 +219,6 @@ def sacar():
                     menu()
                 else:
                     valor = float(valor)
-                    if valor < 0:
-                        print()
-                        print('APENAS VALORES MAIORES QUE ZERO!')
-                        print()
-                        sleep(0.5)
-                        menu()
 
                 conta.sacar(valor)
 
@@ -298,12 +292,6 @@ def transferir():
                         menu()
                     else:
                         valor = float(valor)
-                        if valor < 0:
-                            print()
-                            print('APENAS VALORES MAIORES QUE ZERO!')
-                            print()
-                            sleep(0.5)
-                            menu()
 
                     conta_1.transferir(conta_2, valor)
 
