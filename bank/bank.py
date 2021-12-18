@@ -294,6 +294,13 @@ def transferir():
                         valor = float(valor)
 
                     conta_1.transferir(conta_2, valor)
+                    
+                else:
+                    print()
+                    print('CONTA NÃO ENCONTRADA!')
+                    print()
+                sleep(0.5)
+                menu()
 
             else:
                 print()
