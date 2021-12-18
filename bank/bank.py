@@ -94,7 +94,7 @@ def criar_conta():
             sleep(0.5)
             menu()
         cpf: str = input('CPF: ')
-        if cpf == '' or not cpf.isnumeric():
+        if cpf == '':
             print()
             print('DIGITE SEU CPF!')
             print()
@@ -102,7 +102,7 @@ def criar_conta():
             menu()
 
         data_nascimento: str = input('DATA DE NASCIMENTO: ')
-        if data_nascimento == '' or not data_nascimento.isnumeric():
+        if data_nascimento == '':
             print()
             print('DIGITE SUA DATA DE NASCIMENTO!')
             print()
