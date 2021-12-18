@@ -164,20 +164,15 @@ def depositar():
                     menu()
                 else:
                     valor = int(valor)
-                    if valor < 1:
-                        print()
-                        print('APENAS VALORES MAIORES QUE ZERO!')
-                        print()
-                        sleep(0.5)
-                        menu()
+                        
                 conta.depositar(valor)
 
             else:
                 print()
                 print('CONTA NÃO ENCONTRADA!')
                 print()
-                sleep(0.5)
-                menu()
+            sleep(0.5)
+            menu()
 
         else:
             print()
