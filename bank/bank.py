@@ -102,7 +102,7 @@ def criar_conta():
             menu()
 
         data_nascimento: str = input('DATA DE NASCIMENTO: ')
-        if data_nascimento == '' or data_nascimento.isnumeric():
+        if data_nascimento == '' or not data_nascimento.isnumeric():
             print()
             print('DIGITE SUA DATA DE NASCIMENTO!')
             print()
