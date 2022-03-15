@@ -46,5 +46,6 @@ class Client:
 
     def __str__(self) -> str:
         return f"Client's code: {self.code}\nCLient's name: {self.name}\nClient's last name: {self.last_name}" \
-               f"\nClient's email: {self.email}\nClient's birthday: {self.data_nascimento_ed}" \
+               f"\nClient's email: {self.email}\nClient's cpf: {self.cpf}"\
+               f"\nClient's birthday: {self.data_nascimento_ed}" \
                f"\nClient's day of registration: {self.data_cadastro_ed}"
