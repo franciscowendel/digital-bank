@@ -57,7 +57,7 @@ class Account:
         """Deposita o valor informado pelo usuário na conta informada por este."""
         if value > 0:
             self.saldo = self.saldo + value
-            self.saldo_total = self._calcula_saldo_total
+            self.saldo_total = self._calcula_saldo_total()
             print()
             print('DEPÓSITO FEITO COM SUCESSO!')
             print()
@@ -69,13 +69,13 @@ class Account:
         if 0 < value <= self.saldo_total:
             if self.saldo >= value:
                 self.saldo = self.saldo - value
-                self.saldo_total = self._calcula_saldo_total
+                self.saldo_total = self._calcula_saldo_total()
 
             else:
                 resto: float = self.saldo - value
                 self.limite_extra: float = self.limite_extra + resto
                 self.saldo = 0
-                self.saldo_total = self._calcula_saldo_total
+                self.saldo_total = self._calcula_saldo_total()
             print()
             print('SAQUE EFETUADO COM SUCESSO!')
             print()
