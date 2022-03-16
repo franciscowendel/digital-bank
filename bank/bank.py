@@ -163,7 +163,7 @@ def depositar():
                     sleep(0.5)
                     menu()
                 else:
-                    valor = int(valor)
+                    valor = float(valor)
                         
                 conta.depositar(valor)
 
