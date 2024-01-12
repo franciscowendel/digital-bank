@@ -7,49 +7,49 @@ from time import sleep
 accounts: List[Account] = []
 
 
-def menu():
+def bank():
     try:
         print('-------------------------------------------------------')
         print('-------------------------ATM---------------------------')
         print('-------------------------------------------------------')
         print()
-        print('1 - CRIAR CONTA: ')
-        print('2 - EFETUAR DEPÓSITO: ')
-        print('3 - EFETUAR SAQUE: ')
-        print('4 - EFETUAR TRANSFERÊNCIA: ')
-        print('5 - LISTAR CONTAS: ')
-        print('6 - SAIR: ')
+        print('1 - Create account: ')
+        print('2 - Deposit: ')
+        print('3 - Withdraw: ')
+        print('4 - Transfer: ')
+        print('5 - List accounts: ')
+        print('6 - Quit: ')
         print()
 
         option = input()
         if option == '' or not option.isnumeric():
             print()
-            print('ESCOLHA UMA OPÇÃO!')
+            print('Choose an option!')
             print()
             sleep(0.5)
-            menu()
+            bank()
         else:
             option = int(option)
             if option > 6:
                 print()
-                print('APENAS AS ESCOLHAS APRESENTADAS!')
+                print('Type one of the options that were given.')
                 print()
                 sleep(0.5)
-                menu()
+                bank()
 
         if option == 1:
-            criar_conta()
+            create_account()
         elif option == 2:
-            depositar()
+            deposit()
         elif option == 3:
-            sacar()
+            withdraw()
         elif option == 4:
-            transferir()
+            transfer()
         elif option == 5:
-            listar_contas()
+            list_accounts()
         elif option == 6:
             print()
-            print('FIM DA SESSÃO...')
+            print('...')
             print()
             sleep(0.5)
             exit(1)
@@ -60,73 +60,75 @@ def menu():
         sleep(0.5)
         menu()
 
-    except (ValueError, TypeError, UnboundLocalError) as err:
+    except (ValueError, TypeError) as err:
         return f'Errors {err} found...'
 
 
-def criar_conta():
+def create_account():
     try:
-        print('-------------')
-        print('CRIAR CONTA: ')
-        print('-------------')
+        print('------------------')
+        print('Account creation: ')
+        print('------------------')
         print()
-        name: str = input('NOME: ')
+        name: str = input('Name: ')
         if name == '' or name.isnumeric():
             print()
-            print('DIGITE SEU NOME!')
+            print('Type your name!')
             print()
             sleep(0.5)
-            menu()
+            bank()
 
-        last_name: str = input('SOBRENOME: ')
+        last_name: str = input('Lastname: ')
         if last_name == '' or last_name.isnumeric():
             print()
-            print('DIGITE SEU SOBRENOME!')
+            print('Type your last name!')
             print()
             sleep(0.5)
-            menu()
+            bank()
 
-        email: str = input('EMAIL: ')
+        email: str = input('Email: ')
         if email == '' or email.isnumeric():
             print()
-            print('DIGITE SEU EMAIL!')
+            print('Type your email!')
             print()
             sleep(0.5)
-            menu()
+            bank()
         cpf: str = input('CPF: ')
         if cpf == '':
             print()
-            print('DIGITE SEU CPF!')
+            print('Type your cpf!')
             print()
             sleep(0.5)
-            menu()
+            bank()
 
-        data_nascimento: str = input('DATA DE NASCIMENTO: ')
-        if data_nascimento == '':
+        birthday: str = input('Birthday: (dd/mm/yyyy)')
+        if birthday == '':
             print()
-            print('DIGITE SUA DATA DE NASCIMENTO!')
+            print('Type your birthday!')
             print()
             sleep(0.5)
-            menu()
+            bank()
         print()
-        cliente: Client = Client(name, last_name, email, cpf, data_nascimento)
+        client: Client = Client(name, last_name, email, cpf, birthday)
 
-        conta: Account = Account(cliente)
+        account: Account = Account(client)
 
-        print('-------------------------')
-        print('CONTA CRIADA COM SUCESSO!')
-        print('-------------------------')
+        print('-----------------------------')
+        print('Account created successfully!')
+        print('-----------------------------')
         print()
         sleep(0.5)
-        accounts.append(conta)
+        accounts.append(account)
         print('----------------')
-        print('DADOS DA CONTA: ')
+        print("Account's info: ")
         print('----------------')
         print()
-        print(conta)
+        print(account)
         print()
+        sleep(0.5)
+        bank()
 
-    except (ValueError, TypeError, UnboundLocalError) as err:
+    except (ValueError, TypeError) as err:
         return f'Errors {err} found...'
 
 
@@ -339,15 +341,15 @@ def listar_contas():
     menu()
 
 
-def rastrear_conta(number):
+def get_account_by_code(code):
     x = None
 
     if len(accounts) > 0:
-        for conta in accounts:
-            if conta.numero == number:
-                x = conta
+        for account in accounts:
+            if account.code == code:
+                x = account
     return x
 
 
 if __name__ == '__main__':
-    menu()
+    bank()
