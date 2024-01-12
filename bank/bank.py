@@ -55,10 +55,10 @@ def bank():
             exit(1)
         else:
             print()
-            print('ERROR...')
+            print('Error...')
             print()
         sleep(0.5)
-        menu()
+        bank()
 
     except (ValueError, TypeError) as err:
         return f'Errors {err} found...'
@@ -132,62 +132,62 @@ def create_account():
         return f'Errors {err} found...'
 
 
-def depositar():
+def deposit():
     try:
         if len(accounts) > 0:
-            print('----------------------------------------------------')
-            print('DIGITE O NÚMERO DA CONTA QUE VAI RECEBER O DEPÓSITO:')
-            print('----------------------------------------------------')
+            print('-------------------------------------------------------')
+            print("Type the account's code that will receive the deposit: ")
+            print('-------------------------------------------------------')
             print()
-            for conta in accounts:
+            for account in accounts:
                 print('------------------------------------------------')
-                print(conta)
+                print(account)
                 print('------------------------------------------------')
                 print()
-            number = input()
-            if number == '' or not number.isnumeric():
+            code = input()
+            if code == '' or not code.isnumeric():
                 print()
-                print('DIGITE O NÚMERO!')
+                print('Type the code!')
                 print()
                 sleep(0.5)
-                menu()
+                bank()
             else:
-                number = int(number)
+                code = int(code)
 
-            conta: Account = rastrear_conta(number)
+            account: Account = get_account_by_code(code)
 
-            if conta:
-                valor = input('DIGITE O VALOR DO DEPÓSITO: ')
-                if valor == '' or not valor.isnumeric():
+            if account:
+                deposit_value = input('Type the deposit value: ')
+                if deposit_value == '' or not deposit_value.isnumeric():
                     print()
-                    print('DIGITE O VALOR DO DEPÓSITO!')
+                    print('Type the deposit value!')
                     print()
                     sleep(0.5)
-                    menu()
+                    bank()
                 else:
-                    valor = float(valor)
+                    deposit_value = float(deposit_value)
                         
-                conta.depositar(valor)
+                account.deposit(deposit_value)
 
             else:
                 print()
-                print('CONTA NÃO ENCONTRADA!')
+                print('Account not found!')
                 print()
             sleep(0.5)
-            menu()
+            bank()
 
         else:
             print()
-            print('NENHUMA CONTA CRIADA!')
+            print('Zero accounts created!')
             print()
         sleep(0.5)
-        menu()
+        bank()
 
-    except (ValueError, TypeError, UnboundLocalError) as err:
+    except (ValueError, TypeError) as err:
         return f'Errors {err} found...'
 
 
-def sacar():
+def withdraw():
     try:
         if len(accounts) > 0:
             print('--------------------------------------------------')
