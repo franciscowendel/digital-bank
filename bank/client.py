@@ -1,4 +1,4 @@
-from aux import (
+from auxiliary import (
     date_to_str, 
     str_to_date
 )
