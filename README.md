@@ -1,4 +1,4 @@
-# digital-bank-account
+# Simple Digital Bank 
 
 A *simple digital bank account* where the user can: 
 __1 - Create an account;__ 
