@@ -1,57 +1,58 @@
-from aux import float_to_str
+from auxiliary import float_to_str
 from client import Client
 
 
 class Account:
 
-    codigo: int = 1000
+    number: int = 1
 
     def __init__(self, client: Client) -> None:
-        self.__numero: int = Account.codigo
+        self.__code: int = Account.number
         self.__client: Client = client
-        self.__saldo: float = 0.0
-        self.__limite_extra: float = 100.00
-        self.__saldo_total: float = self._calcula_saldo_total()
-        Account.codigo += 1
+        self.__balance: float = 0.0
+        self.__extra_limit: float = 50.00
+        self.__total_balance: float = self._calculate_total_balance()
+        Account.number += 1
 
     @property
-    def numero(self) -> int:
-        return self.__numero
+    def code(self) -> int:
+        return self.__code
 
     @property
     def client(self):
         return self.__client
 
     @property
-    def saldo(self) -> float:
-        return self.__saldo
+    def balance(self) -> float:
+        return self.__balance
 
     @saldo.setter
-    def saldo(self, value):
-        self.__saldo = value
+    def balance(self, value):
+        self.__balance = value
 
     @property
-    def limite_extra(self) -> float:
-        return self.__limite_extra
+    def extra_limit(self) -> float:
+        return self.__extra_limit
 
     @limite_extra.setter
-    def limite_extra(self, value):
-        self.__limite_extra = value
+    def extra_limit(self, value):
+        self.__extra_limit = value
 
     @property
-    def saldo_total(self) -> float:
-        return self.__saldo_total
+    def total_balance(self) -> float:
+        return self.__total_balance
 
     @saldo_total.setter
-    def saldo_total(self, valor):
-        self.__saldo_total = valor
+    def total_balance(self, value):
+        self.__total_balance = value
 
-    def _calcula_saldo_total(self) -> float:
-        return self.__saldo + self.__limite_extra
+    def _calculate_total_balance(self) -> float:
+        return self.__balance + self.__extra_limit
 
     def __str__(self) -> str:
-        return f"Account's number: {self.numero}\n{self.client}" \
-               f"\nTotal balance: {float_to_str(self.saldo_total)}"
+        return f"{self.client}" \
+               f"\nAccount's code: {self.code}" \
+               f"\nTotal balance: {float_to_str(self.total_balance)}"
 
     def depositar(self, value):
         """Deposita o valor informado pelo usuário na conta informada por este."""
