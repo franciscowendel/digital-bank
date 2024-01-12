@@ -1,6 +1,6 @@
 # Simple Digital Bank 
 
-A *simple digital bank account* where the user can: 
+A *simple digital bank* where the user can: 
 __1 - Create an account;__ 
 __2 - Make deposit;__ 
 __3 - Make withdrawl;__ 
