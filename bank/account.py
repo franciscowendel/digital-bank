@@ -108,4 +108,7 @@ class Account:
             print('Tranfer made successfully!')
             print()
         else:
+            print()
             print('Error...')
+            print()
+            
