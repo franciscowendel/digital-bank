@@ -26,7 +26,7 @@ class Account:
     def balance(self) -> float:
         return self.__balance
 
-    @saldo.setter
+    @balance.setter
     def balance(self, value):
         self.__balance = value
 
@@ -34,7 +34,7 @@ class Account:
     def extra_limit(self) -> float:
         return self.__extra_limit
 
-    @limite_extra.setter
+    @extra_limit.setter
     def extra_limit(self, value):
         self.__extra_limit = value
 
@@ -42,7 +42,7 @@ class Account:
     def total_balance(self) -> float:
         return self.__total_balance
 
-    @saldo_total.setter
+    @total_balance.setter
     def total_balance(self, value):
         self.__total_balance = value
 
