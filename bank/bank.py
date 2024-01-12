@@ -238,107 +238,107 @@ def withdraw():
         sleep(0.5)
         bank()
 
-    except (ValueError, TypeError, UnboundLocalError) as err:
+    except (ValueError, TypeError) as err:
         return f'Errors {err} found...'
 
 
-def transferir():
+def transfer():
     try:
         if len(accounts) > 0:
 
             print('---------------------------------------------------')
-            print('DIGITE O NÚMERO DA CONTA QUE VAI FAZER O DEPÓSITO: ')
+            print("Type the account's code that will make the transfer")
             print('---------------------------------------------------')
             print()
-            for conta in accounts:
+            for account in accounts:
                 print('-----------------------------------------------')
-                print(conta)
+                print(account)
                 print('-----------------------------------------------')
                 print()
-            number_1 = input()
-            if number_1 == '' or not number_1.isnumeric():
+            code_1 = input()
+            if code_1 == '' or not code_1.isnumeric():
                 print()
-                print('DIGITE O NÚMERO DA CONTA!')
+                print('Type the code!')
                 print()
                 sleep(0.5)
-                menu()
+                bank()
             else:
-                number_1 = int(number_1)
+                code_1 = int(code_1)
 
-            conta_1 = rastrear_conta(number_1)
+            account_1 = rastrear_conta(code_1)
 
-            if conta_1:
-                print('-----------------------------------------------------')
-                print('DIGITE O NÚMERO DA CONTA QUE VAI RECEBER O DEPÓSITO: ')
-                print('-----------------------------------------------------')
+            if account_1:
+                print('--------------------------------------------------------')
+                print("Type the account's code that will receive the transfer: ")
+                print('--------------------------------------------------------')
                 print()
-                number_2 = input()
-                if number_2 == '' or not number_2.isnumeric():
+                code_2 = input()
+                if code_2 == '' or not code_2.isnumeric():
                     print()
-                    print('DIGITE O NÚMERO DA CONTA!')
+                    print('Type the code!')
                     print()
                     sleep(0.5)
-                    menu()
+                    bank()
                 else:
-                    number_2 = int(number_2)
+                    code_2 = int(code_2)
 
-                conta_2 = rastrear_conta(number_2)
+                account_2 = get_account_by_code(code_2)
 
-                if conta_2:
-                    valor = input('DIGITE O VALOR DA TRANSFERÊNCIA: ')
-                    if valor == '' or not valor.isnumeric():
+                if account_2:
+                    transfer_value = input('Type the transfer value: ')
+                    if transfer_value == '' or not transfer_value.isnumeric():
                         print()
-                        print('DIGITE O VALOR DA TRANSFERÊNCIA!')
+                        print('Type the transfer value!')
                         print()
                         sleep(0.5)
-                        menu()
+                        bank()
                     else:
-                        valor = float(valor)
+                        transfer_value = float(transfer_value)
 
-                    conta_1.transferir(conta_2, valor)
+                    account_1.transfer(account_2, transfer_value)
                     
                 else:
                     print()
-                    print('CONTA NÃO ENCONTRADA!')
+                    print('Account not found!')
                     print()
                 sleep(0.5)
-                menu()
+                bank()
 
             else:
                 print()
-                print('CONTA NÃO ENCONTRADA!')
+                print('Account not found!')
                 print()
                 sleep(0.5)
-                menu()
+                bank()
         else:
             print()
-            print('NENHUMA CONTA CRIADA!')
+            print('Zero accounts created!')
             print()
         sleep(0.5)
-        menu()
+        bank()
 
-    except (ValueError, TypeError, UnboundLocalError) as err:
+    except (ValueError, TypeError) as err:
         return f'Errors {err} found...'
 
 
-def listar_contas():
+def list_accounts():
     if len(accounts) > 0:
 
-        print('-----------------')
-        print('LISTA DE CONTAS: ')
-        print('-----------------')
+        print('------------------')
+        print('List of accounts: ')
+        print('------------------')
         print()
-        for conta in accounts:
+        for account in accounts:
             print('-------------------------------------------')
-            print(conta)
+            print(account)
             print('-------------------------------------------')
             print()
     else:
         print()
-        print('NENHUMA CONTA CRIADA!')
+        print('Zero accounts created!')
         print()
     sleep(0.5)
-    menu()
+    bank()
 
 
 def get_account_by_code(code):
