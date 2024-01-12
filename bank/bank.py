@@ -8,6 +8,7 @@ accounts: List[Account] = []
 
 
 def bank():
+    """Shows the options the user can choose."""
     try:
         print('-------------------------------------------------------')
         print('-------------------------ATM---------------------------')
@@ -65,6 +66,7 @@ def bank():
 
 
 def create_account():
+    """Creates an account for the user."""
     try:
         print('------------------')
         print('Account creation: ')
@@ -265,7 +267,7 @@ def transfer():
             else:
                 code_1 = int(code_1)
 
-            account_1 = rastrear_conta(code_1)
+            account_1 = get_account_by_code(code_1)
 
             if account_1:
                 print('--------------------------------------------------------')
@@ -342,6 +344,7 @@ def list_accounts():
 
 
 def get_account_by_code(code):
+    """Function made to get the right account in the functions 'deposit', 'withdraw', 'transfer'."""
     x = None
 
     if len(accounts) > 0:
