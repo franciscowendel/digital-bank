@@ -95,7 +95,7 @@ def create_account():
             print()
             sleep(0.5)
             bank()
-        cpf: str = input('CPF: ')
+        cpf: str = input('CPF: ***.***.***-**')
         if cpf == '':
             print()
             print('Type your cpf!')
