@@ -190,53 +190,53 @@ def deposit():
 def withdraw():
     try:
         if len(accounts) > 0:
-            print('--------------------------------------------------')
-            print('DIGITE O NÚMERO DA CONTA QUE VAI EFETUAR O SAQUE: ')
-            print('--------------------------------------------------')
+            print('---------------------------------------------------------')
+            print("Type the account's code you are going to withdraw from.: ")
+            print('---------------------------------------------------------')
             print()
-            for conta in accounts:
+            for account in accounts:
                 print('----------------------------------------------')
-                print(conta)
+                print(account)
                 print('----------------------------------------------')
                 print()
-            number = input()
-            if number == '' or not number.isnumeric():
+            code = input()
+            if code == '' or not code.isnumeric():
                 print()
-                print('DIGITE O NÚMERO DA CONTA!')
+                print('Type the code!')
                 print()
                 sleep(0.5)
-                menu()
+                bank()
             else:
-                number = int(number)
+                code = int(code)
 
-            conta: Account = rastrear_conta(number)
+            account: Account = get_account_by_code(code)
 
-            if conta:
-                valor = input('DIGITE O VALOR DO SAQUE: ')
-                if valor == '' or not valor.isnumeric():
+            if account:
+                withdraw_value = input('Type the withdraw value ')
+                if withdraw_value == '' or not withdraw_value.isnumeric():
                     print()
-                    print('DIGITE O VALOR DO SAQUE!')
+                    print('Type the withdraw value!')
                     print()
                     sleep(0.5)
-                    menu()
+                    bank()
                 else:
-                    valor = float(valor)
+                    withdraw_value = float(withdraw_value)
 
-                conta.sacar(valor)
+                account.withdraw(withdraw_value)
 
             else:
                 print()
-                print('CONTA NÃO ENCONTRADA!')
+                print('Account not found!')
                 print()
                 sleep(0.5)
-                menu()
+                bank()
 
         else:
             print()
-            print('NENHUMA CONTA CRIADA!')
+            print('Zero accounts created!')
             print()
         sleep(0.5)
-        menu()
+        bank()
 
     except (ValueError, TypeError, UnboundLocalError) as err:
         return f'Errors {err} found...'
