@@ -47,6 +47,7 @@ class Account:
         self.__total_balance = value
 
     def _calculate_total_balance(self) -> float:
+        """Calculates the total balance of the account including the extra limit."""
         return self.__balance + self.__extra_limit
 
     def __str__(self) -> str:
@@ -54,54 +55,57 @@ class Account:
                f"\nAccount's code: {self.code}" \
                f"\nTotal balance: {float_to_str(self.total_balance)}"
 
-    def depositar(self, value):
-        """Deposita o valor informado pelo usuário na conta informada por este."""
+    def deposit(self, value):
+        """Deposits an amount into the user's account."""
         if value > 0:
-            self.saldo = self.saldo + value
-            self.saldo_total = self._calcula_saldo_total()
+            self.balance = self.balance + value
+            self.total_balance = self._calculate_total_balance()
             print()
-            print('DEPÓSITO FEITO COM SUCESSO!')
+            print('Deposit made successfully!')
             print()
         else:
-            print('ERROR...')
-
-    def sacar(self, value):
-        """Saca o valor informado pelo usuário da conta informada por este."""
-        if 0 < value <= self.saldo_total:
-            if self.saldo >= value:
-                self.saldo = self.saldo - value
-                self.saldo_total = self._calcula_saldo_total()
+            print()
+            print('Error...')
+            print()
+            
+    def withdraw(self, value):
+        """Withdraws value from a user's account."""
+        if 0 < value <= self.total_balance:
+            if self.balance >= value:
+                self.balance = self.balance - value
+                self.total_balance = self._calculate_total_balance()
 
             else:
-                resto: float = self.saldo - value
-                self.limite_extra: float = self.limite_extra + resto
-                self.saldo = 0
-                self.saldo_total = self._calcula_saldo_total()
+                x: float = self.balance - value
+                self.extra_limit: float = self.extra_limit + x
+                self.balance = 0
+                self.total_balance = self._calculate_total_balance()
             print()
-            print('SAQUE EFETUADO COM SUCESSO!')
+            print('Withdraw made successfully!')
             print()
         else:
-            print('ERROR...')
-
-    def transferir(self, other_account, value):
-        """Transfere um valor de uma conta para outra após ser informado o código da conta origem e
-        o código da conta destino."""
-        if 0 < value <= self.saldo_total:
-            if self.saldo >= value:
-                self.saldo = self.saldo - value
-                self.saldo_total = self._calcula_saldo_total()
-                other_account.saldo = other_account.saldo + value
-                other_account.saldo_total = other_account._calcula_saldo_total()  # noqa
+            print()
+            print('Error...')
+            print()
+            
+    def transfer(self, other_account, value):
+        """Transfers a value from an account to another."""
+        if 0 < value <= self.total_balance:
+            if self.balance >= value:
+                self.balance = self.balance - value
+                self.total_balance = self._calculate_total_balance()
+                other_account.balance = other_account.balance + value
+                other_account.total_balance = other_account._calculate_total_balance()  # noqa
 
             else:
-                resto: float = self.saldo - value
-                self.limite_extra = self.limite_extra + resto
-                self.saldo = 0
-                self.saldo_total = self._calcula_saldo_total()
-                other_account.saldo = other_account.saldo + value
-                other_account.saldo_total = other_account._calcula_saldo_total()  # noqa
+                x: float = self.balance - value
+                self.extra_limit = self.extra_limit + x
+                self.balance = 0
+                self.total_balance = self._calculate_total_balance()
+                other_account.balance = other_account.balance + value
+                other_account.total_balance = other_account._calculate_total_balance()  # noqa
             print()
-            print('TRANSFERÊNCIA EFETUADA COM SUCESSO!')
+            print('Tranfer made successfully!')
             print()
         else:
-            print('ERROR...')
+            print('Error...')
